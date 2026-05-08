@@ -42,3 +42,33 @@ WHERE neighbourhood IN ('Midtown', 'Downtown', 'Chinatown');
 SELECT * FROM restaurant WHERE health='';
 
 SELECT * FROM restaurant ORDER BY review DESC LIMIT 4;
+
+/* 1. Find all restaurants where the name starts with 'M' */
+SELECT * FROM restaurant WHERE name LIKE 'M%';
+
+/* 2. List restaurants that are NOT in Midtown */
+SELECT * FROM restaurant WHERE neighbourhood != 'Midtown';
+
+/* 3. Filter for reviews between 3.0 and 4.0 */
+SELECT * FROM restaurant WHERE review BETWEEN 3.0 AND 4.0;
+
+/* 4. Count the total number of restaurants in the table */
+SELECT COUNT(*) FROM restaurant;
+
+/* 5. Calculate the average review score for all restaurants */
+SELECT AVG(review) FROM restaurant;
+
+/* 6. Find the most expensive price point available */
+SELECT MAX(price) FROM restaurant;
+
+/* 7. Group restaurants by cuisine to see how many of each exist */
+SELECT cuisine, COUNT(*) FROM restaurant GROUP BY cuisine;
+
+/* 8. Update the health grade for 'Minca' which was previously empty */
+UPDATE restaurant SET health = 'A' WHERE name = 'Minca';
+
+/* 9. Delete any restaurant with a review lower than 3.1 */
+DELETE FROM restaurant WHERE review < 3.1;
+
+/* 10. Find restaurants that are either in Queens OR have an 'A' health grade */
+SELECT * FROM restaurant WHERE neighbourhood = 'Queens' OR health = 'A';
